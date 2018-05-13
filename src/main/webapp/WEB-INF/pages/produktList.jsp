@@ -43,9 +43,9 @@ function plusImg(n) {
 
 function sliderImg (n) {
     var i;
-    var x  = document.querySelectorAll(".img-list");
+//    var x  = document.querySelectorAll(".img-list");
 //    var arrayElemants = Array.from(x);
-var xx= JSON.stringify(x);
+var xx= JSON.stringify(document.querySelectorAll("img-list"));
     if(n > arrayElemants.length){count =1}
     if(n < 1){count = arrayElemants.length}
     for (i =0; i<arrayElemants.length; i++){
