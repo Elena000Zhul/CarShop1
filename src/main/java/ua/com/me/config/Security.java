@@ -16,6 +16,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import java.security.Principal;
 
 @Configuration
 @EnableWebSecurity
@@ -38,7 +42,6 @@ public class Security extends WebSecurityConfigurerAdapter {
         return provider;
     }
 
-
     private InMemoryUserDetailsManagerConfigurer<AuthenticationManagerBuilder> inMemoryConfigure() {
         return new InMemoryUserDetailsManagerConfigurer<AuthenticationManagerBuilder>();
     }
@@ -53,12 +56,10 @@ public class Security extends WebSecurityConfigurerAdapter {
                 .and()
                 .configure(auth);
         auth.authenticationProvider(provider);
-
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
         http.authorizeRequests()
                 .antMatchers("/", "/home").permitAll()
                 .antMatchers("/admin/**").access("hasRole('ADMIN')")
@@ -66,7 +67,7 @@ public class Security extends WebSecurityConfigurerAdapter {
 //                .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
 //                .antMatchers("/myAccount/**").access("hasRole('ROLE_USER') ")
                 .and().formLogin().loginPage("/login")
-                .usernameParameter("userName").passwordParameter("password")
+                .usernameParameter("username").passwordParameter("password")
                 .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .and().csrf().and()
                 .exceptionHandling()/*.accessDeniedHandler()*/.accessDeniedPage("/403");

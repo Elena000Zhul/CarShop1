@@ -19,7 +19,7 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-//@EnableJpaRepositories("ua.com.me.dao")
+@EnableJpaRepositories("ua.com.me.dao")
 @EnableTransactionManagement
 @PropertySource("classpath:bases.properties")
 public class DataConfig {
@@ -58,8 +58,8 @@ public class DataConfig {
 
 
     @Bean
-    public JpaTransactionManager transactionManager(EntityManagerFactory factory) {
-        JpaTransactionManager transactionManager = new JpaTransactionManager(factory);
+    public JpaTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
+        JpaTransactionManager transactionManager = new JpaTransactionManager(entityManagerFactory);
         return transactionManager;
     }
 

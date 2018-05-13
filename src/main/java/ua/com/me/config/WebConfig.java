@@ -25,21 +25,22 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Autowired
     private Environment env;
-//
-    @Bean
-    public JavaMailSenderImpl javaMailSender(){
-        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-        mailSender.setHost(env.getProperty("email.host"));
-        mailSender.setPort(Integer.parseInt(env.getProperty("email.port")));
-        mailSender.setUsername(env.getProperty("email.username"));
-        mailSender.setPassword(env.getProperty("email.password"));
-        Properties properties = mailSender.getJavaMailProperties();
-        properties.put(env.getProperty("email.protocol"), env.getProperty("email.protocol.val"));
-        properties.put(env.getProperty("email.auth"), env.getProperty("email.auth.val"));
-        properties.put(env.getProperty("email.starttls"), env.getProperty("email.starttls.val"));
-        properties.put(env.getProperty("email.mail.debug"), env.getProperty("email.mail.debug.val"));
-        return mailSender;
-    }
+
+    //
+//    @Bean
+//    public JavaMailSenderImpl javaMailSender() {
+//        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+//        mailSender.setHost(env.getProperty("email.host"));
+//        mailSender.setPort(Integer.parseInt(env.getProperty("email.port")));
+//        mailSender.setUsername(env.getProperty("email.username"));
+//        mailSender.setPassword(env.getProperty("email.password"));
+//        Properties properties = mailSender.getJavaMailProperties();
+//        properties.put(env.getProperty("email.protocol"), env.getProperty("email.protocol.val"));
+//        properties.put(env.getProperty("email.auth"), env.getProperty("email.auth.val"));
+//        properties.put(env.getProperty("email.starttls"), env.getProperty("email.starttls.val"));
+//        properties.put(env.getProperty("email.mail.debug"), env.getProperty("email.mail.debug.val"));
+//        return mailSender;
+//    }
 
     @Bean
     public InternalResourceViewResolver viewResolver() {
@@ -60,6 +61,11 @@ public class WebConfig extends WebMvcConfigurerAdapter {
                 .addResourceLocations("/static/img/");
         registry.addResourceHandler("/userAvatar/**")
                 .addResourceLocations("file:" + System.getProperty("user.home") + File.separator + "usersImages\\");
+        registry.addResourceHandler("/produktImages/**")
+                .addResourceLocations("file:" + System.getProperty("user.home") + File.separator + "produktImg\\");
+        registry.addResourceHandler("/js/**").addResourceLocations("/WEB-INF/javascript/");
+        registry.addResourceHandler("/css/**").addResourceLocations("/WEB-INF/css/");
     }
+
 
 }
