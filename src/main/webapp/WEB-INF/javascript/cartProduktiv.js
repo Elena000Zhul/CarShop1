@@ -10,7 +10,7 @@ function  checkCart () {
     }
 }
 
-// джейсоном витягти продукт в змінну і передати в фор
+
 function showCart () {
         if ($.isEmptyObject(cart)){
             var out = 'Sopping cart is empty';

@@ -18,7 +18,7 @@
    <div id="img-container"  style="max-width: 280px">
        <button class="btnClass" id="prev" onclick="plusImg(-1)">&#10094;</button>
     <c:forEach  items="${produkt.images}" var="image">
-        <img src="${image}"  id="img-list"  alt="" style="border: 1px solid black; width: 260px">
+        <img src="${image}"  class="${image}" id="img-list"  alt="" style="border: 1px solid black; width: 260px">
     </c:forEach>
        <button class="btnClass" id="next" onclick="plusImg(1)">&#10095;</button>
    </div>
@@ -39,10 +39,9 @@ function plusImg(n) {
 
 function sliderImg (n) {
 //    var i;
-    var ar  = $('.produkt-container').find('a');
-    var x = $(this).attr('href');
-//    var x = Array.from(arrrr);
-//var m = document.getElementsByClassName(".img-list")
+    var x  = $('.produkt-container').find('a');
+
+
     if(n > x.length){count =1}
     if(n < 1){count = x.length}
     for (i =0; i<x.length; i++){
