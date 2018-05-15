@@ -11,10 +11,10 @@
 <br>
 <div class="produktList">
     <c:forEach items="${produkt}" var="produkt">
-        <div class="produkt-container " style=" border: 1px solid #ccc; padding: 5px;
-    width: 300px; margin: 10px ; display: inline-block;text-align:left;">
-            <%--<div class="produkt-container ${product.name}" style=" border: 1px solid #ccc; padding: 5px;--%>
+        <%--<div class="produkt-container " style=" border: 1px solid #ccc; padding: 5px;--%>
     <%--width: 300px; margin: 10px ; display: inline-block;text-align:left;">--%>
+            <div class="produkt-container ${product.name}" style=" border: 1px solid #ccc; padding: 5px;
+    width: 300px; margin: 10px ; display: inline-block;text-align:left;">
             <a href="produkt${produkt.id}">${produkt.model}</a>
                 <%--<img src="${produkt.images[o]}" alt="">--%>
             <div id="img-container" style="max-width: 280px">
@@ -31,12 +31,13 @@
 
 </div>
 
-<script>
-//    $(".supercar #img-container img")
-</script>
 
 
 <script>
+
+    var mmmm=  $(".supen #img-container img");
+    if
+
 
     var count = 1;
     sliderImg(count);
