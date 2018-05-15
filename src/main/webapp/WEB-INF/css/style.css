@@ -1,9 +1,18 @@
 
 
 .menu-container{
-    position: absolute;
+    position: fixed;
     text-align: left;
     text-decoration: dashed;
-    font-size: x-large;
-    font-style: inherit;
+    font-size: large;
+    font-style: italic;
+}
+
+.qout{
+    text-align: center;
+    font-size: xx-large;
+    font-style: italic ;
+    width: 100%;
+    margin-top: 160px;
+    position: relative;
 }

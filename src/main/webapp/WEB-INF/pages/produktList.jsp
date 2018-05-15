@@ -1,27 +1,24 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="template/header.jsp"%>
+<link rel="stylesheet" href="css/globalStyle.css">
 
-
-
-<script src="js/SlideImages.js"></script>
 
 <div class="mini-cart" >
-   <%--<button class="cartButton">Корзина</button>--%>
 </div>
 <br>
-<a href="/shoppingCart">YourCart</a>
+<a href="/shoppingCart" class="link">Cart Page</a>
 <br>
-
+<div class="produktList">
 <c:forEach items="${produkt}" var="produkt">
     <div class="produkt-container" style=" border: 1px solid #ccc; padding: 5px;
     width: 300px; margin: 10px ; display: inline-block;text-align:left;">
-    <a href="produkt${produkt.id}" >${produkt.model}</a>
+    <a   href="produkt${produkt.id}" >${produkt.model}</a>
     <%--<img src="${produkt.images[o]}" alt="">--%>
    <div id="img-container"  style="max-width: 280px">
        <button class="btnClass" id="prev" onclick="plusImg(-1)">&#10094;</button>
     <c:forEach  items="${produkt.images}" var="image">
-        <img src="${image}" class="img-list" alt="" style="border: 1px solid black; width: 260px">
+        <img src="${image}"  id="img-list"  alt="" style="border: 1px solid black; width: 260px">
     </c:forEach>
        <button class="btnClass" id="next" onclick="plusImg(1)">&#10095;</button>
    </div>
@@ -29,11 +26,10 @@
     </div>
 </c:forEach>
 
-
 </div>
 
 <script>
-<%--var ima =document.getAnonymousElementByAttribute("items" , ${produkt.images}"") ;--%>
+
 var count = 1;
 sliderImg(count);
 
@@ -42,19 +38,24 @@ function plusImg(n) {
 }
 
 function sliderImg (n) {
-    var i;
-//    var x  = document.querySelectorAll(".img-list");
-//    var arrayElemants = Array.from(x);
-var xx= JSON.stringify(document.querySelectorAll("img-list"));
-    if(n > arrayElemants.length){count =1}
-    if(n < 1){count = arrayElemants.length}
-    for (i =0; i<arrayElemants.length; i++){
-        arrayElemants[i].style.display ="none";
+//    var i;
+    var ar  = $('.produkt-container').find('a');
+    var x = $(this).attr('href');
+//    var x = Array.from(arrrr);
+//var m = document.getElementsByClassName(".img-list")
+    if(n > x.length){count =1}
+    if(n < 1){count = x.length}
+    for (i =0; i<x.length; i++){
+        x[i].style.display ="none";
     }
-    arrayElemants[count-1].style.display = "block";
+    x[count-1].style.display = "block";
 
-console.log(xx);
+console.log(x);
 }
+
+<%--var xxx = $(document.getElementsByName("${images}")) ;--%>
+<%--forEach--%>
+<%--console.log(xxx);--%>
 
 
 

@@ -19,10 +19,11 @@
 
       <a href="/produktList">produktList</a>
   </div>
-
-<span style="margin-top: ">Quickest Acceleration.
-    Longest Range. The Safest Cars Ever.</span>
-
+<div class="qout">
+<span>Quickest Acceleration.
+    Longest Range.
+    <br> The Safest Cars Ever.</span>
+</div>
 
 
   <%@include file="template/footer.jsp"%>

@@ -12,36 +12,60 @@ function  checkCart () {
 
 // джейсоном витягти продукт в змінну і передати в фор
 function showCart () {
-   var o = ' ' ;
-    for (var r in cart) {
-        // o += r + ' ' + cart[r] + '<br>';
-        o += '<button class=delate">Delate</button>';
-        // o += '<img src="${images}">';
+        if ($.isEmptyObject(cart)){
+            var out = 'Sopping cart is empty';
+            $('.produrk-in-cart').html(out);
+        }else{
+            var o = ' ' ;
+            for (var r in cart) {
+        o += r + ' ' + cart[r] + '<br>';
 
         // for (var i in $(produkt.images)){
         //    o+= ' <img src="$(produkt[i].image)">';
         // }
-        // o += '<button class="minus"> - </button>';
-
-        // o += '<button class="plus"> + </button>';
-
+        o += '<button class="minus" data-art="'+r+'"> - </button>';
+        o += '<button class="plus" data-art="'+r+'"> + </button>';
+        o += '<button class="delate" data-art="'+r+'"> delate </button>'
 
     }
-
-    $('document .plus').on('click', function () {
-
-
-    })
-
-
     $('.produrk-in-cart').html(o);
     console.log(o);
+    $('.plus').on('click', plusPro);
+    $('.minus').on('click',  minusPro);
+    $('.delate').on('click',  delatePro);
+}}
+
+
+function plusPro() {
+    var artt = $(this).attr('data-art');
+    cart[artt]++;
+    updateCart();
+    showCart();
 }
 
 
+function minusPro() {
+    var artt = $(this).attr('data-art');
+    if (cart[artt]>1){
+        cart[artt]--;
+    }
+   else {
+        delete cart[artt];
+    }
+    updateCart();
+    showCart();
+}
 
+function delatePro() {
+    var artt = $(this).attr('data-art');
+        delete cart[artt];
+    updateCart();
+    showCart();
+}
 
-
+function updateCart() {
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
 
 
 

@@ -9,14 +9,37 @@ body {
 
 }
 
+.produktList{
+    width: 100%;
+    position: inherit;
+
+}
+
+
+
 
 .header-container{
 
-   position: fixed;
-
+  width: 100%;
+    text-align: center;
 }
 .Site-name{
     text-align: center; font-size: xx-large; font-style: italic;
+}
+.h3{
+    text-align: center;
+
+}
+
+.produrk-in-cart{
+    display: inline-block;
+    width: 120px;
+}
+
+.mini-cart{
+    float: right;
+    width: 20%;
+    display: block;
 }
 
 
